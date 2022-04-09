@@ -7,14 +7,14 @@ print('''
  ''')
 print("Welcome to Treasure Island.")
 print("Your mission is to find the treasure.")
-print("Do you want to go right or left?")
+print("You are at a crossroad, where do you want to go? Right or left?")
 direction = input()
 
 if direction == "left":
-   print("Do you want to swim or wait?")
+   print('You have come to a lake. There is an island in the middle of the lake. Type "wait" to wait for a boat. Type "swim" to swim across.')
    choice = input()
    if choice == "wait":
-       print("Which door do you choose? red, blue or yellow?")
+       print("You arrive at the island unharmed. There is a house with 3 doors. Which door do you want to open? red, blue or yellow?")
        door = input()
        if door == "red":
            print("You got burned by fire, game over...")
