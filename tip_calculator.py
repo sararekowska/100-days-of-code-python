@@ -8,5 +8,4 @@ with_tip = percentage / 100 * total + total
 result = round(with_tip / people, 2)
 
 
-
 print(f"Each person should pay: ${result}")
