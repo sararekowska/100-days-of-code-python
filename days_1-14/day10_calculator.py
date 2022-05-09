@@ -30,21 +30,31 @@ def divide(n1, n2):
 operations = {"+": add, "-": substract, "*": multiply, "/": divide}
 
 print(logo)
-num1 = int(input("What's the first number?: "))
 
-for symbol in operations:
-    print(symbol)
+def calculator():
+    num1 = float(input("What's the first number?: "))
 
-should_continue = True
+    for symbol in operations:
+        print(symbol)
 
-while should_continue:
-    operation_symbol = input("Pick an operation: ")
-    num2 = int(input("What's the next number?: "))
-    result = operations[operation_symbol](num1, num2)
+    should_continue = True
 
-    print(f"{num1} {operation_symbol} {num2} = {result}")
+    while should_continue:
+        operation_symbol = input("Pick an operation: ")
+        num2 = float(input("What's the next number?: "))
+        result = operations[operation_symbol](num1, num2)
 
-    if input(f"Type 'y' to continue calculating with {result} or type 'n' to exit: ") == "y":
-        num1 = result
-    else:
-        should_continue = False
+        print(f"{num1} {operation_symbol} {num2} = {result}")
+
+        choice = input(f"Type 'y' to continue calculating with {result}, type 'n' to exit or type 'c' to start a new calculation: ")
+        if choice == "y":
+            num1 = result
+        elif choice == "n":
+            should_continue = False
+        elif choice == "c":
+            calculator()
+        else:
+            print("incorrect value, exiting")
+            should_continue = False
+
+calculator()
