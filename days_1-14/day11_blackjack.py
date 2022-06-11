@@ -1,5 +1,5 @@
 import random
-from re import T
+import os
 
 logo = """
 .------.            _     _            _    _            _    
@@ -28,9 +28,6 @@ def calculate_score(cards_list):
             cards_list.remove(11)
             cards_list.append(1)
     return score
-
-user_score = calculate_score(user_cards)
-computer_score = calculate_score(computer_cards)
 
 def compare(user_score, computer_score):
   if user_score > 21 and computer_score > 21:
@@ -70,11 +67,20 @@ def game():
         if user_score == 0 or computer_score == 0 or user_score > 21:
             game_end = True
         else:
-            user_deal = input("Type 'y' tog et another card, type 'n' to pass: ")
+            user_deal = input("Type 'y' to get another card, type 'n' to pass: ")
             if user_deal == "y":
                 user_cards.append(deal_card())
             else:
                 game_end = True
 
-#Hint 12: Once the user is done, it's time to let the computer play. The computer should keep drawing cards as long as it has a score less than 17.
-#Hint 14: Ask the user if they want to restart the game. If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
+    while computer_score != 0 and computer_score < 17:
+        computer_cards.append(deal_card())
+        computer_score = calculate_score(computer_cards)
+
+    print(f"   Your final hand: {user_cards}, final score: {user_score}")
+    print(f"   Computer's final hand: {computer_cards}, final score: {computer_score}")
+    print(compare(user_score, computer_score))
+
+while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
+    os.system('cls')
+    game()
